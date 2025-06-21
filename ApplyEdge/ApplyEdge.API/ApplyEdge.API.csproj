@@ -11,4 +11,11 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\ApplicationHub\" />
+      <Folder Include="Features\ExperienceHub\Application\" />
+      <Folder Include="Features\ExperienceHub\Domain\" />
+      <Folder Include="Features\ExperienceHub\Infrastructure\" />
+    </ItemGroup>
+
 </Project>

@@ -1,9 +1,24 @@
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.Runtime;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// These three lines are essential.
+builder.Services.AddAWSService<IAmazonDynamoDB>();
+builder.Services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
+builder.Services.AddSingleton<IAmazonDynamoDB>(sp =>
+{
+    var config = new AmazonDynamoDBConfig { ServiceURL = "http://localhost:8000" };
+    var credentials = new BasicAWSCredentials("fakeKey", "fakeSecret");
+    return new AmazonDynamoDBClient(credentials, config);
+});
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -15,6 +30,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
 
 var summaries = new[]
 {

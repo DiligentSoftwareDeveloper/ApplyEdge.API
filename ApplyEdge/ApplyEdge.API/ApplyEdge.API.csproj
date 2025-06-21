@@ -7,6 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AWSSDK.Core" Version="4.0.0.12" />
+        <PackageReference Include="AWSSDK.DynamoDBv2" Version="4.0.1.8" />
+        <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="4.0.2" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.17"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
@@ -14,7 +17,6 @@
     <ItemGroup>
       <Folder Include="Features\ApplicationHub\" />
       <Folder Include="Features\ExperienceHub\Application\" />
-      <Folder Include="Features\ExperienceHub\Domain\" />
       <Folder Include="Features\ExperienceHub\Infrastructure\" />
     </ItemGroup>
 
